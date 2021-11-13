@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/home_screen.dart';
+import 'pages/current_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Restaurant Shuffle',
-      initialRoute: HomeScreen.id,
+      initialRoute: CurrentScreen.id,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
-        HomeScreen.id: (context) => HomeScreen(),
+        CurrentScreen.id: (context) => CurrentScreen(),
       },
     );
   }
