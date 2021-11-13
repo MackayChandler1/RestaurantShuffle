@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_shuffle/home.dart';
+import 'pages/current_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Restaurant Shuffle',
+      initialRoute: CurrentScreen.id,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -25,8 +26,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      routes: {Home.route: (_) => const Home()},
-      initialRoute: Home.route,
+      routes: {
+        CurrentScreen.id: (context) => CurrentScreen(),
+      },
     );
   }
 }
