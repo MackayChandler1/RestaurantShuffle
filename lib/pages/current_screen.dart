@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_shuffle/pages/favorites_screen.dart';
 import 'dart:core';
 import 'package:restaurant_shuffle/pages/home_screen.dart';
+import 'package:restaurant_shuffle/pages/profile_screen.dart';
+import 'package:restaurant_shuffle/pages/restaurant_details.dart';
 
 class CurrentScreen extends StatefulWidget {
   static const String id = 'current_screen';
@@ -11,6 +14,9 @@ class CurrentScreen extends StatefulWidget {
 class _CurrentScreenState extends State<CurrentScreen> {
   var _pages = [
     HomeScreen(),
+    FavoritesScreen(),
+    RestauarantDetailsScreen(),
+    ProfileScreen(),
   ];
 
   int currentPage = 0;
