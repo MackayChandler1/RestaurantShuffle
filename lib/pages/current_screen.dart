@@ -33,8 +33,8 @@ class _CurrentScreenState extends State<CurrentScreen> {
           });
         },
         type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -52,7 +52,7 @@ class _CurrentScreenState extends State<CurrentScreen> {
             backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.person),
             label: 'Profile',
             backgroundColor: Colors.blue,
           ),

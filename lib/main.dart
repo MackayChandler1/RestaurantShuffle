@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurant_shuffle/pages/filter_screen.dart';
 import 'pages/current_screen.dart';
 
 void main() {
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         CurrentScreen.id: (context) => CurrentScreen(),
+        FilterScreen.id: (context) => FilterScreen(),
       },
     );
   }
