@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:restaurant_shuffle/pages/filter_screen.dart';
+import 'dart:convert';
+import 'package:restaurant_shuffle/models/restaurant.dart';
+import 'dart:math';
+import 'dart:core';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -8,7 +13,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String resturantName = '';
+  List _restaurantList = [];
+  Random _rnd = Random();
+  var _index = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    readJson();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: Center(
         child: Text(
-          "Example Restaurant",
+          _restaurantList[_index].name,
           style: TextStyle(fontSize: 24),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: example,
+        onPressed: shuffle,
         child: Icon(
           Icons.refresh,
           size: 40,
@@ -40,9 +53,28 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  //Delete when implementation is finished
-  void example() {
-    debugPrint("Shuffle");
+  Future<void> readJson() async {
+    final String response =
+        await rootBundle.loadString('assets/example_restaurants.json');
+    var list = json
+        .decode(response)['restaurants']
+        .map((data) => Restaurant.fromJson(data))
+        .toList();
+    setState(() {
+      _restaurantList = list;
+      _index = _rnd.nextInt(_restaurantList.length);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  void shuffle() {
+    setState(() {
+      this._index = _rnd.nextInt(_restaurantList.length);
+    });
   }
 
   void navigateToFilter() {

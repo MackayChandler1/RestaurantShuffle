@@ -1,0 +1,114 @@
+{
+"restaurants": [
+{
+    "id": 1,
+    "name": "McDonalds",
+    "address": "221 W 1230 N",
+    "city": "Provo",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 1.5,
+    "review_count": 56,
+    "is_open": true
+},
+{
+    "id": 2,
+    "name": "Taco Bell",
+    "address": "1244 N Freedom Blvd",
+    "city": "Provo",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 2.5,
+    "review_count": 20,
+    "is_open": true
+},
+{
+    "id": 3,
+    "name": "Street Tacos Don Joaquin",
+    "address": "150 W 1230th N St",
+    "city": "Provo",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 4.5,
+    "review_count": 324,
+    "is_open": true
+},
+{
+    "id": 4,
+    "name": "Bok Bok Provo",
+    "address": "1181 N Canyon Rd",
+    "city": "Provo",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 4.5,
+    "review_count": 79,
+    "is_open": true
+},
+{
+    "id": 5,
+    "name": "Wendy's",
+    "address": "122 East 1230 North",
+    "city": "Provo",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 2.4,
+    "review_count": 51,
+    "is_open": true
+},
+{
+    "id": 6,
+    "name": "In-N-Out Burger",
+    "address": "350 E University Pkwy",
+    "city": "Orem",
+    "state": "UT",
+    "postal_code": "84058",
+    "stars": 4,
+    "review_count": 219,
+    "is_open": true
+},
+{
+    "id": 7,
+    "name": "Chili's",
+    "address": "122 E 1300 S",
+    "city": "Orem",
+    "state": "UT",
+    "postal_code": "84058",
+    "stars": 3,
+    "review_count": 115,
+    "is_open": true
+},
+{
+    "id": 8,
+    "name": "Freddy's Frozen Custard & Steakburgers",
+    "address": "1146 Draper Pkwy",
+    "city": "Draper",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 3.5,
+    "review_count": 70,
+    "is_open": true
+},
+{
+    "id": 9,
+    "name": "Olive Garden Italian Restaurant",
+    "address": "504 W 2230 N",
+    "city": "Provo",
+    "state": "UT",
+    "postal_code": "84604",
+    "stars": 3,
+    "review_count": 129,
+    "is_open": true
+},
+{
+    "id": 10,
+    "name": "The Habit Burger Grill",
+    "address": "232 N W State Rd Ste 101",
+    "city": "American Fork",
+    "state": "UT",
+    "postal_code": "84003",
+    "stars": 4,
+    "review_count": 90,
+    "is_open": true
+}
+]
+}

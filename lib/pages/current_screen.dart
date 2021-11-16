@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_shuffle/pages/favorites_screen.dart';
 import 'dart:core';
 import 'package:restaurant_shuffle/pages/home_screen.dart';
-import 'package:restaurant_shuffle/pages/profile_screen.dart';
 import 'package:restaurant_shuffle/pages/restaurant_details.dart';
 
 class CurrentScreen extends StatefulWidget {
@@ -16,7 +15,6 @@ class _CurrentScreenState extends State<CurrentScreen> {
     HomeScreen(),
     FavoritesScreen(),
     RestauarantDetailsScreen(),
-    ProfileScreen(),
   ];
 
   int currentPage = 0;
@@ -50,12 +48,7 @@ class _CurrentScreenState extends State<CurrentScreen> {
             icon: Icon(Icons.restaurant),
             label: 'Details',
             backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-            backgroundColor: Colors.blue,
-          ),
+          )
         ],
       ),
     );
