@@ -34,7 +34,7 @@
     "stars": 4.5,
     "review_count": 324,
     "is_open": true,
-    "favorite": false
+    "favorite": true
 },
 {
     "id": 4,
@@ -70,7 +70,7 @@
     "stars": 4,
     "review_count": 219,
     "is_open": true,
-    "favorite": false
+    "favorite": true
 },
 {
     "id": 7,
