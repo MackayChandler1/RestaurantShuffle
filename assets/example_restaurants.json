@@ -9,7 +9,8 @@
     "postal_code": "84604",
     "stars": 1.5,
     "review_count": 56,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 2,
@@ -20,7 +21,8 @@
     "postal_code": "84604",
     "stars": 2.5,
     "review_count": 20,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 3,
@@ -31,7 +33,8 @@
     "postal_code": "84604",
     "stars": 4.5,
     "review_count": 324,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 4,
@@ -42,7 +45,8 @@
     "postal_code": "84604",
     "stars": 4.5,
     "review_count": 79,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 5,
@@ -53,7 +57,8 @@
     "postal_code": "84604",
     "stars": 2.4,
     "review_count": 51,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 6,
@@ -64,7 +69,8 @@
     "postal_code": "84058",
     "stars": 4,
     "review_count": 219,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 7,
@@ -75,7 +81,8 @@
     "postal_code": "84058",
     "stars": 3,
     "review_count": 115,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 8,
@@ -86,7 +93,8 @@
     "postal_code": "84604",
     "stars": 3.5,
     "review_count": 70,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 9,
@@ -97,7 +105,8 @@
     "postal_code": "84604",
     "stars": 3,
     "review_count": 129,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 },
 {
     "id": 10,
@@ -108,7 +117,8 @@
     "postal_code": "84003",
     "stars": 4,
     "review_count": 90,
-    "is_open": true
+    "is_open": true,
+    "favorite": false
 }
 ]
 }
