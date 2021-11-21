@@ -5,6 +5,8 @@ import 'dart:convert';
 import 'package:restaurant_shuffle/models/restaurant.dart';
 import 'dart:math';
 import 'dart:core';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -13,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
   List _restaurantList = [];
   Random _rnd = Random();
   var _index = 0;
@@ -20,6 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    firestore
+        .collection('restaurants')
+        .get()
+        .then((QuerySnapshot querySnapshot) {
+      querySnapshot.docs.forEach((doc) {
+        debugPrint(doc['name']);
+      });
+    });
     readJson();
   }
 
