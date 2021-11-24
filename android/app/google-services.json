@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "76928724912",
+    "project_id": "restaurant-shuffle-36870",
+    "storage_bucket": "restaurant-shuffle-36870.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76928724912:android:9343406b44318683593075",
+        "android_client_info": {
+          "package_name": "com.example.restuarant_shuffle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76928724912-rrmtfk9ecnn6jdppf6omturdbo1ded3g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMnQJIWaiCcjxoVJEv9_DNZRryImwE0lQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76928724912-rrmtfk9ecnn6jdppf6omturdbo1ded3g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "76928724912-1g7kct5gs2t2t9njv95q4eei4dm2hedj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.restaurantShuffle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
