@@ -6,7 +6,6 @@ import 'package:restaurant_shuffle/models/restaurant.dart';
 import 'dart:math';
 import 'dart:core';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -15,23 +14,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  List _restaurantList = [];
-  Random _rnd = Random();
+  late List _restaurantList = [];
+  final Random _rnd = Random();
   var _index = 0;
 
   @override
   void initState() {
     super.initState();
-    firestore
-        .collection('restaurants')
-        .get()
-        .then((QuerySnapshot querySnapshot) {
-      querySnapshot.docs.forEach((doc) {
-        debugPrint(doc['name']);
-      });
-    });
-    readJson();
+    getData();
   }
 
   @override
@@ -48,10 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Center(
-        child: Text(
-          _restaurantList[_index].name,
-          style: TextStyle(fontSize: 24),
-        ),
+        child: _restaurantList.isEmpty
+            ? Text("Loading...")
+            : Text(
+                _restaurantList[_index]['name'],
+                style: TextStyle(fontSize: 30),
+              ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: shuffle,
@@ -64,19 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/example_restaurants.json');
-    var list = json
-        .decode(response)['restaurants']
-        .map((data) => Restaurant.fromJson(data))
-        .toList();
-    setState(() {
-      _restaurantList = list;
-      _index = _rnd.nextInt(_restaurantList.length);
-    });
-  }
-
   @override
   void dispose() {
     super.dispose();
@@ -84,11 +63,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void shuffle() {
     setState(() {
-      this._index = _rnd.nextInt(_restaurantList.length);
+      _index = _rnd.nextInt(_restaurantList.length);
     });
   }
 
   void navigateToFilter() {
     Navigator.of(context).pushNamed(FilterScreen.id);
+  }
+
+  Widget _returnRandomRestaurant(
+      BuildContext context, DocumentSnapshot document) {
+    return Text(document['name']);
+  }
+
+  void getData() async {
+    await FirebaseFirestore.instance
+        .collection('restaurants')
+        .get()
+        .then((QuerySnapshot querysnapshot) {
+      setState(() {
+        _restaurantList = querysnapshot.docs;
+      });
+    });
+    debugPrint(_restaurantList.length.toString());
   }
 }
