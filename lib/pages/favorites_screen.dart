@@ -46,7 +46,21 @@ class _FavoritesScreen extends State<FavoritesScreen> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 return ListTile(
-                  title: Text(data['name']),
+                  leading: FlutterLogo(
+                    size: 30,
+                  ),
+                  title: Center(
+                    child: Text(
+                      data['name'],
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                  trailing: IconButton(
+                    icon: Icon(Icons.star),
+                    color: Colors.yellow,
+                    iconSize: 30,
+                    onPressed: () => _star(data['id']),
+                  ),
                 );
               }).toList(),
             );
@@ -54,7 +68,15 @@ class _FavoritesScreen extends State<FavoritesScreen> {
         ));
   }
 
-  void star() {
-    debugPrint("Press Star");
+  CollectionReference restaurants =
+      FirebaseFirestore.instance.collection('restaurants');
+  void _star(num id) async {
+    num docId = id + 1;
+    await restaurants
+        .doc(docId.toString())
+        .update({'favorite': false})
+        .then((value) => print("Restaurant Updated"))
+        .catchError((error) => print("Failed to update restaurant: $error"));
+    ;
   }
 }
