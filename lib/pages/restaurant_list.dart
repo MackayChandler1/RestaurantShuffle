@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:restaurant_shuffle/pages/restaurant_details.dart';
 
 class RestauarantListScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -33,7 +35,7 @@ class _RestauarantListScreen extends State<RestauarantListScreen> {
             return Center(child: Text('Loading...'));
           }
           if (!snapshot.hasData) {
-            return Center(child: Text('No Favorites'));
+            return Center(child: Text('No Restaurants'));
           }
           return ListView(
             children: snapshot.data!.docs.map((DocumentSnapshot document) {
@@ -44,11 +46,19 @@ class _RestauarantListScreen extends State<RestauarantListScreen> {
                   size: 30,
                 ),
                 title: Center(
-                  child: Text(
-                    data['name'],
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
+                    child: RichText(
+                  text: TextSpan(
+                      text: data['name'],
+                      style: TextStyle(fontSize: 20, color: Colors.black),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      RestaurantDetails(restaurant: data)));
+                        }),
+                )),
                 trailing: IconButton(
                   icon: data['favorite']
                       ? Icon(Icons.star)
