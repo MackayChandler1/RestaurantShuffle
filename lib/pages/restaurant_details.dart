@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:maps_launcher/maps_launcher.dart';
 
 class RestaurantDetails extends StatelessWidget {
   const RestaurantDetails({Key? key, required this.restaurant})
@@ -29,9 +31,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ItemImage(
-            imgStr:
-                'https://www.incimages.com/uploaded_files/image/1920x1080/getty_1187117706_2000133320009280260_423297.jpg'),
+        ItemImage(imgStr: data['imgURL']),
         Expanded(child: ItemInfo(data: data))
       ],
     );
@@ -72,21 +72,78 @@ class ItemInfo extends StatelessWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        Text(
-                          data['name'],
-                          style: TextStyle(fontSize: 30),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            data['name'],
+                            style: Theme.of(context).textTheme.headline4,
+                          ),
                         ),
                         SizedBox(
                           height: 10,
                         ),
                         Row(
                           children: [
-                            SmoothStarRating(
-                              borderColor: Colors.amber,
-                              rating: data['rating'],
-                            )
+                            RatingBar.builder(
+                              itemBuilder: (context, _) => Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating) {
+                                debugPrint("Updated");
+                              },
+                              initialRating: data['stars'],
+                              minRating: 0,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 1.0),
+                              itemSize: 30,
+                            ),
+                            Text('${data['review_count']} reviews')
                           ],
-                        )
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              data['price'] + ' | ',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            Text(data['category'] + ' | ',
+                                style: TextStyle(fontSize: 20)),
+                            data['is_open']
+                                ? Text(
+                                    'is open',
+                                    style: TextStyle(
+                                        color: Colors.green, fontSize: 20),
+                                  )
+                                : Text('is closed',
+                                    style: TextStyle(
+                                        color: Colors.red, fontSize: 20)),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: RichText(
+                              text: TextSpan(
+                                  text:
+                                      '${data['address']}, ${data['city']}, ${data['state']} ${data['postal_code']}',
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => MapsLauncher.launchQuery(
+                                        '${data['address']}, ${data['city']}, ${data['state']} ${data['postal_code']}, USA'),
+                                  style: TextStyle(color: Colors.blue))),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(data['description'])
                       ],
                     ),
                   )
