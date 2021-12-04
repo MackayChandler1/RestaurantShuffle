@@ -6,6 +6,7 @@ import 'package:restaurant_shuffle/models/restaurant.dart';
 import 'dart:math';
 import 'dart:core';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:restaurant_shuffle/globals.dart' as globals;
 
 class HomeScreen extends StatefulWidget {
   static const String id = 'home_screen';
@@ -15,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late List _restaurantList = [];
+  var filteredList = [];
   final Random _rnd = Random();
   var _index = 0;
 
@@ -38,10 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Center(
-        child: _restaurantList.isEmpty
-            ? Text("Loading...")
+        child: filteredList.isEmpty
+            ? Text("All restaurants are filtered out")
             : Text(
-                _restaurantList[_index]['name'],
+                filteredList[_index]['name'],
                 style: TextStyle(fontSize: 30),
               ),
       ),
@@ -63,12 +65,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void shuffle() {
     setState(() {
-      _index = _rnd.nextInt(_restaurantList.length);
+      if (filteredList.isEmpty) {
+        _index = 0;
+      } else {
+        _index = _rnd.nextInt(filteredList.length - 1);
+      }
     });
   }
 
   void navigateToFilter() {
-    Navigator.of(context).pushNamed(FilterScreen.id);
+    Navigator.of(context).pushNamed(FilterScreen.id).then((value) {
+      filterList();
+    });
+  }
+
+  void filterList() {
+    filteredList = _restaurantList
+        .where((r) =>
+            (r["category"] == globals.category ||
+                globals.category == "All Categories") &&
+            r["milesRadius"] <= globals.miles &&
+            r["pricePerMeal"] <= globals.price)
+        .toList();
+    setState(() {});
   }
 
   Widget _returnRandomRestaurant(
@@ -77,13 +96,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void getData() async {
-    await FirebaseFirestore.instance
-        .collection('restaurants')
-        .get()
-        .then((QuerySnapshot querysnapshot) {
-      setState(() {
-        _restaurantList = querysnapshot.docs;
-      });
-    });
+    var snapshot =
+        await FirebaseFirestore.instance.collection('restaurants').get();
+    _restaurantList = snapshot.docs.map((e) => e.data()).toList();
+    filterList();
   }
 }
