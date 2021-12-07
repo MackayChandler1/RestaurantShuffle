@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (filteredList.isEmpty) {
         _index = 0;
       } else {
-        _index = _rnd.nextInt(filteredList.length - 1);
+        _index = _rnd.nextInt(filteredList.length);
       }
     });
   }

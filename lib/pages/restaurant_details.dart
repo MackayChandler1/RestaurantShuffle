@@ -110,10 +110,10 @@ class ItemInfo extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              data['price'] + ' | ',
+                              '${data['price']}  | ',
                               style: TextStyle(fontSize: 20),
                             ),
-                            Text(data['category'] + ' | ',
+                            Text('${data['category']} | ',
                                 style: TextStyle(fontSize: 20)),
                             data['is_open']
                                 ? Text(

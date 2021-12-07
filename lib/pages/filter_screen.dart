@@ -17,7 +17,7 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Restaurant Shuffle - Filter'),
+        title: const Text('Filters'),
       ),
       body: Column(children: [
         SizedBox(height: 20),
