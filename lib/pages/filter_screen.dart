@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:restaurant_shuffle/globals.dart' as globals;
 
 class FilterScreen extends StatefulWidget {
-  static const String id = 'home_screen';
+  static const String id = 'filter_screen';
   @override
   _FilterScreenState createState() => _FilterScreenState();
 }

@@ -46,14 +46,9 @@ class _FavoritesScreen extends State<FavoritesScreen> {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;
                 return ListTile(
-                  leading: FlutterLogo(
-                    size: 30,
-                  ),
-                  title: Center(
-                    child: Text(
-                      data['name'],
-                      style: TextStyle(fontSize: 20),
-                    ),
+                  title: Text(
+                    data['name'],
+                    style: TextStyle(fontSize: 20),
                   ),
                   trailing: IconButton(
                     icon: Icon(Icons.star),

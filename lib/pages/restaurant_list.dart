@@ -42,11 +42,7 @@ class _RestauarantListScreen extends State<RestauarantListScreen> {
               Map<String, dynamic> data =
                   document.data()! as Map<String, dynamic>;
               return ListTile(
-                leading: FlutterLogo(
-                  size: 30,
-                ),
-                title: Center(
-                    child: RichText(
+                title: RichText(
                   text: TextSpan(
                       text: data['name'],
                       style: TextStyle(fontSize: 20, color: Colors.black),
@@ -58,7 +54,7 @@ class _RestauarantListScreen extends State<RestauarantListScreen> {
                                   builder: (context) =>
                                       RestaurantDetails(restaurant: data)));
                         }),
-                )),
+                ),
                 trailing: IconButton(
                   icon: data['favorite']
                       ? Icon(Icons.star)

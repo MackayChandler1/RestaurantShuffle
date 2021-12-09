@@ -110,7 +110,7 @@ class ItemInfo extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '\$${data['pricePerMeal']}  | ',
+                              '${data['cost']}  | ',
                               style: TextStyle(fontSize: 20),
                             ),
                             Text('${data['category']} | ',
@@ -140,10 +140,12 @@ class ItemInfo extends StatelessWidget {
                                         '${data['address']}, ${data['city']}, ${data['state']} ${data['postal_code']}, USA'),
                                   style: TextStyle(color: Colors.blue))),
                         ),
-                        SizedBox(
-                          height: 20,
+                        Container(
+                          height: 9,
                         ),
-                        Text(data['description'])
+                        SingleChildScrollView(
+                            child: Text(data['description']),
+                            scrollDirection: Axis.vertical)
                       ],
                     ),
                   )
