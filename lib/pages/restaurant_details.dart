@@ -110,7 +110,7 @@ class ItemInfo extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              '${data['price']}  | ',
+                              '\$${data['pricePerMeal']}  | ',
                               style: TextStyle(fontSize: 20),
                             ),
                             Text('${data['category']} | ',
