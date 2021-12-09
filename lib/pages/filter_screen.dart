@@ -10,7 +10,7 @@ class FilterScreen extends StatefulWidget {
 String category = globals.category;
 double miles = globals.miles;
 double price = globals.price;
-var items = ["All Categories", "burger", "mexican"];
+var items = ["All Categories", "Burger", "Mexican", "Italian", "Sandwich"];
 
 class _FilterScreenState extends State<FilterScreen> {
   @override
